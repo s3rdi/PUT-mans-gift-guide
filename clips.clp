@@ -27,7 +27,6 @@
 
 
 ; Wynik flowchartu
-;
 ; id - identyfikator produktu (Holiday 4-Pack?)
 ; reason - uzasadnienie
 
@@ -45,7 +44,6 @@
    ; brak pierwszego atrybutu (pytanie o płeć)
    (not (attribute (name gender)))
    =>
-   ; pytanie startowe
    (assert (request-input 
       (id q_gender)
       (valid-answers val_male val_female)
@@ -98,7 +96,7 @@
    =>
    (assert (request-input 
       (id q_dad_tie_count)
-      (valid-answers val_gt_75 val_lt_75_gt_30 val_lt_30)
+      (valid-answers val_gt_75 val_lt_75)
    ))
 )
 
@@ -115,9 +113,9 @@
 (defrule res-dad-not-so-many-ties
    (attribute (name relation) (value val_dad))
    (attribute (name prev_gift) (value val_tie))
-   (attribute (name tie_count) (value val_gt_75))
+   (attribute (name tie_count) (value val_lt_75))
    =>
-   (assert (recommendation (id res_4pack) (reason rsn_skip_ties)))
+   (assert (recommendation (id res_4pack) (reason rsn_month_ties)))
 )
 
 ; So Dad is pretty handy huh?
@@ -198,7 +196,7 @@
 ; Younger or older?
 (defrule ask-brother-age
    (attribute (name relation) (value val_brother))
-   (not (attribute (name relative_age)))
+   (not (attribute (name brother_age)))
    =>
    (assert (request-input (id q_brother_age) (valid-answers val_younger val_older)))
 )
@@ -206,7 +204,7 @@
 ; So you probably picked on him when you were growing up?
 (defrule ask-brother-younger-bullied
    (attribute (name relation) (value val_brother))
-   (attribute (name relative_age) (value val_younger))
+   (attribute (name brother_age) (value val_younger))
    (not (attribute (name bully_you)))
    =>
    (assert (request-input (id q_bullied) (valid-answers val_yes val_no)))
@@ -214,7 +212,7 @@
 
 ; Show him how much you've grown and make amends for your adolescent bullying by getting him a Holiday 4-Pack.
 (defrule res-brother-younger-bully
-   (attribute (name relative_age) (value val_younger))
+   (attribute (name brother_age) (value val_younger))
    (attribute (name bully_you) (value val_yes))
    =>
    (assert (recommendation (id res_4pack) (reason rsn_amends_bullying)))
@@ -222,7 +220,7 @@
 
 ; You are the best older brother ever! You have probably already bought him multiple Holiday 4-Packs.
 (defrule res-brother-younger-nice
-   (attribute (name relative_age) (value val_younger))
+   (attribute (name brother_age) (value val_younger))
    (attribute (name bully_you) (value val_no))
    =>
    (assert (recommendation (id res_4pack) (reason rsn_best_brother)))
@@ -231,7 +229,7 @@
 ; So he probably picked on you when you were growing up?
 (defrule ask-brother-older-bullied
    (attribute (name relation) (value val_brother))
-   (attribute (name relative_age) (value val_older))
+   (attribute (name brother_age) (value val_older))
    (not (attribute (name bully_him)))
    =>
    (assert (request-input (id q_bullied_you) (valid-answers val_yes val_no)))
@@ -239,7 +237,7 @@
 
 ; Here's what you do: Get him a Holiday 4-Pack, then get yourself a 10-Pack and passive-aggressively demonstrate your newfound superiority.
 (defrule res-brother-older-noogie
-   (attribute (name relative_age) (value val_older))
+   (attribute (name brother_age) (value val_older))
    (attribute (name bully_him) (value val_yes))
    =>
    (assert (recommendation (id res_4pack) (reason rsn_superiority)))
@@ -247,7 +245,7 @@
 
 ; You have the best older brother ever! Get a pair of Holiday 4-Pack and enjoy some quality time with this great guy.
 (defrule res-brother-older-nice
-   (attribute (name relative_age) (value val_older))
+   (attribute (name brother_age) (value val_older))
    (attribute (name bully_him) (value val_no))
    =>
    (assert (recommendation (id res_4pack) (reason rsn_best_older_brother)))
