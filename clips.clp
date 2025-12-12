@@ -13,15 +13,13 @@
 )
  
  
-; Request do GUI
+; Request pytania
 ;
 ; id - identyfikator pytania
-; type - typ odpowiedzi
 ; valid-answers - lista odpowiedzi
  
 (deftemplate request-input
    (slot id)
-   (slot type (default single-choice))
    (multislot valid-answers)
 )
  
