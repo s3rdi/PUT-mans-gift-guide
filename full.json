@@ -1,0 +1,30 @@
+{
+  "questions": {
+    "q_gender": {
+      "text": "What is the gender of the person receiving your gift?",
+      "attribute": "gender"
+    },
+    "q_relation_male": {
+      "text": "This is gonna be hard. Guys don't buy gifts for other guys. Why are you buying him a gift?",
+      "attribute": "relation"
+    }
+  },
+
+  "answers": {
+    "val_male":  "Male",
+    "val_female": "Female",
+    "val_dad":  "Dad",
+    "val_brother": "Brother",
+    "val_uncle": "Crazy Uncle Charlie",
+    "val_coworker": "Co-worker",
+    "val_fatherinlaw": "Father-in-law"
+  },
+
+  "products": {
+    "res_4pack": "a Holiday 4-Pack"
+  },
+
+  "reasons": {
+    "rsn_redeem_yourself": "Face it, you'll never be good enough for his daughter. Your best chance of redeeming yourself would be to get him %s."
+  }
+}
