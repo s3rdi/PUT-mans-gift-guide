@@ -83,6 +83,10 @@
     "q_know_anything": {
       "text": "Do you know anything about this person?",
       "attribute": "know_anything"
+    },
+    "q_still_dwelling": {
+      "text": "You're still dwelling on this?",
+      "attribute": "still_dwelling"
     }
   },
 
@@ -109,35 +113,37 @@
     "val_yes": "Yes",
     "val_yes_embarrassing": "Yes, that's the problem. He takes it everywhere and it's super embarrassing.",
     "val_yes_exactly": "Yes, that is exactly what happened.",
+    "val_yes_pony": "Got everything she ever wanted. One Christmas, she got a pony. The best thing I got that year was a pack of new socks.",
     "val_no": "No",
     "val_no_worse_fix": "No, he just thinks he is. In reality he just ends up making things worse when he tries to fix them.",
     "val_no_why_bother": "No, I don't know why I even bother getting him gifts if he's not going to use them anyway.",
     "val_no_actually": "No... he actually did start the house on fire.",
+    "val_no_adorable": "No, she was adorable!",
     "val_younger": "Younger",
     "val_older": "Older",
     "val_last_christmas": "Last Christmas - He drank too much eggnog ans passed out on the couch while watching basketball.",
     "val_thanksgiving": "A couple of weeks ago at Thanksgiving - He ate too much turkey and passed out on the couch while watching football.",
     "val_last_week": "Last Week when he invited himself over then passed out on the couch while watching 'Scandal'.",
     "val_not_yet": "Not yet",
-    "val_sure": "Sure",
+    "val_sure": "Sure. I'm a size 36 so she's probably like a 32.",
     "val_no_chance": "No chance",
-    "val_no_sports": "No, she hates sports",
-    "val_fun_day": "A fun day",
-    "val_quality_time": "Quality time",
-    "val_food": "Food",
-    "val_ornaments": "Ornaments",
-    "val_cake": "Cake",
-    "val_plaque": "Plaque",
-    "val_sweater": "Sweater",
-    "val_poster": "Poster",
-    "val_cat": "Cat",
-    "val_hat": "Hat"
+    "val_no_sports": "She's not really in to sports.",
+    "val_fun_day": "A fun day/night out",
+    "val_quality_time": "Quality time with family/friends",
+    "val_food": "Delicious food and drink",
+    "val_ornaments": "Collecting holiday ornaments",
+    "val_cake": "Fruit cake",
+    "val_plaque": "A 'Home is Where the Heart is' Plaque",
+    "val_sweater": "Hand-knit sweater for her lap dog",
+    "val_poster": "One of those creepy posters where the kids are dressed up like adults",
+    "val_cat": "I think she has a cat.",
+    "val_hat": "Nope. Drew her name out of a hat for Secret Santa.",
+    "val_fresh": "Time to start fresh. 'Tis the season for giving and forgiving!"
   },
 
   "products": {
     "res_4pack": "a Holiday 4-Pack",
-    "res_4pack_own": "a Holiday 4-Pack of your own",
-    "res_4pack_ornament": "a Holiday 4-Pack (plus free ornament)"
+    "res_4pack_own": "a Holiday 4-Pack of your own"
   },
 
   "reasons": {
@@ -165,7 +171,7 @@
     "rsn_free_weekends": "Good decision. You know your limitations. Get her %s and spend your next few weekends watching college football instead of braving shopping malls only to get her a shirt she will return anyway.",
     "rsn_favorite_child": "Obviously you got your brains from your mother. Earn the title of 'favorite child' by getting her %s.",
     "rsn_miller_park": "Well that was easy... Get her %s. She can enjoy all of those things at Miller Park.",
-    "rsn_free_ornament": "Perfect! You get a free Bernie Brewer with every pair of Holiday 4-packs.",
+    "rsn_free_ornament": "Perfect! You get a free Bernie Brewer with every pair of %s.",
     "rsn_forget_ashamed": "For just a minute, forget about what she wants... and get her %s.",
     "rsn_changed_diapers": "The woman probably changed your diapers when you were a baby. You owe her BIG TIME. Get her %s.",
     "rsn_face_light_up": "You know you can't wait to see her face light up when she opens that %s. Just think of the memories you'll make.",

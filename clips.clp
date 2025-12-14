@@ -443,7 +443,7 @@
    (attribute (name relation) (value val_mom))
    (attribute (name mom_likes) (value val_ornaments))
    =>
-   (assert (recommendation (id res_4pack_ornament) (reason rsn_free_ornament)))
+   (assert (recommendation (id res_4pack) (reason rsn_free_ornament)))
 )
  
 ; =========================================================
@@ -492,13 +492,26 @@
    (attribute (name relative_age) (value val_younger))
    (not (attribute (name is_spoiled)))
    =>
-   (assert (request-input (id q_sister_spoiled) (valid-answers val_yes val_no)))
+   (assert (request-input (id q_sister_spoiled) (valid-answers val_yes_pony val_no_adorable)))
 )
- 
+
+; You're still dwelling on this?
+(defrule ask-sister-dwelling
+   (attribute (name relation) (value val_sister))
+   (attribute (name relative_age) (value val_younger))
+   (attribute (name is_spoiled) (value val_yes_pony))
+   (not (attribute (name still_dwelling)))
+   =>
+   (assert (request-input (id q_still_dwelling) (valid-answers val_fresh)))
+)
+
 ; You know you can't wait to see her face light up when she opens that Holiday 4-Pack. Just think of the memories you'll make.
 (defrule res-sister-spoiled-any
    (attribute (name relation) (value val_sister))
-   (attribute (name is_spoiled) (value ?))
+   (or
+   (attribute (name is_spoiled) (value val_no_adorable))
+   (attribute (name still_dwelling) (value val_fresh))
+   )
    =>
    (assert (recommendation (id res_4pack) (reason rsn_face_light_up)))
 )
@@ -509,7 +522,7 @@
  
 ; Do you know anything about this person?
 (defrule ask-coworker-knowledge
-   (attribute (name gender) (value female))
+   (attribute (name gender) (value val_female))
    (attribute (name relation) (value val_coworker))
    (not (attribute (name know_anything)))
    =>
