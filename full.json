@@ -7,24 +7,169 @@
     "q_relation_male": {
       "text": "This is gonna be hard. Guys don't buy gifts for other guys. Why are you buying him a gift?",
       "attribute": "relation"
+    },
+    "q_relation_female": {
+      "text": "Let's face it, you are in trouble. Why are you buying her a gift?",
+      "attribute": "relation"
+    },
+    "q_dad_prev_gift": {
+      "text": "What did you get him last holiday season?",
+      "attribute": "prev_gift"
+    },
+    "q_dad_tie_count": {
+      "text": "How original... How many ties does he own now?",
+      "attribute": "tie_count"
+    },
+    "q_dad_handy": {
+      "text": "So Dad is pretty handy huh?",
+      "attribute": "is_handy"
+    },
+    "q_dad_mug_usage": {
+      "text": "And does he actually use this mug?",
+      "attribute": "uses_mug"
+    },
+    "q_dad_almost_fire": {
+      "text": "Was he so excited to test out the new grill right away that almost started the house on fire?",
+      "attribute": "almost_fire"
+    },
+    "q_relative_age": {
+      "text": "Younger or older?",
+      "attribute": "relative_age"
+    },
+    "q_bullied": {
+      "text": "So you probably picked on him when you were growing up?",
+      "attribute": "bully_you"
+    },
+    "q_bullied_you": {
+      "text": "So he probably picked on you when you were growing up?",
+      "attribute": "bully_him"
+    },
+    "q_uncle_seen": {
+      "text": "Ah yes, Crazy Uncle Charlie... When was the last time you saw him?",
+      "attribute": "seen_lately"
+    },
+    "q_is_boss": {
+      "text": "Is this person your boss?",
+      "attribute": "is_boss"
+    },
+    "q_boss_like": {
+      "text": "Do you like him?",
+      "attribute": "boss_like"
+    },
+    "q_is_fan": {
+      "text": "Is she a Brewers fan?",
+      "attribute": "is_fan"
+    },
+    "q_buy_clothes": {
+      "text": "That's unfortunate, but she'll come around. Have you considered buying her clothes?",
+      "attribute": "buy_clothes"
+    },
+    "q_her_size": {
+      "text": "Really? You should know by now that no woman actually wants a man picking out her clothes. Do you even know her size?",
+      "attribute": "her_size"
+    },
+    "q_mom_likes": {
+      "text": "What else does she like?",
+      "attribute": "mom_likes"
+    },
+    "q_really_wants": {
+      "text": "What does she really want for the holidays?",
+      "attribute": "really_wants"
+    },
+    "q_sister_spoiled": {
+      "text": "Was she spoiled as a child?",
+      "attribute": "is_spoiled"
+    },
+    "q_know_anything": {
+      "text": "Do you know anything about this person?",
+      "attribute": "know_anything"
     }
   },
 
   "answers": {
-    "val_male":  "Male",
+    "val_male": "Male",
     "val_female": "Female",
-    "val_dad":  "Dad",
+    "val_dad": "Dad",
     "val_brother": "Brother",
     "val_uncle": "Crazy Uncle Charlie",
     "val_coworker": "Co-worker",
-    "val_fatherinlaw": "Father-in-law"
+    "val_fatherinlaw": "Father-in-law",
+    "val_wife": "Wife",
+    "val_girlfriend": "Girlfriend",
+    "val_mom": "Mom",
+    "val_motherinlaw": "Mother-in-law",
+    "val_sister": "Sister",
+    "val_coworker_f": "Co-worker",
+    "val_tie": "A tie",
+    "val_powertools": "Power Tools",
+    "val_mug": "A mug that says World's #1 Dad",
+    "val_grill": "A new grill",
+    "val_gt_75": ">75",
+    "val_lt_75": "<75 but >30",
+    "val_yes": "Yes",
+    "val_yes_embarrassing": "Yes, that's the problem. He takes it everywhere and it's super embarrassing.",
+    "val_yes_exactly": "Yes, that is exactly what happened.",
+    "val_no": "No",
+    "val_no_worse_fix": "No, he just thinks he is. In reality he just ends up making things worse when he tries to fix them.",
+    "val_no_why_bother": "No, I don't know why I even bother getting him gifts if he's not going to use them anyway.",
+    "val_no_actually": "No... he actually did start the house on fire.",
+    "val_younger": "Younger",
+    "val_older": "Older",
+    "val_last_christmas": "Last Christmas - He drank too much eggnog ans passed out on the couch while watching basketball.",
+    "val_thanksgiving": "A couple of weeks ago at Thanksgiving - He ate too much turkey and passed out on the couch while watching football.",
+    "val_last_week": "Last Week when he invited himself over then passed out on the couch while watching 'Scandal'.",
+    "val_not_yet": "Not yet",
+    "val_sure": "Sure",
+    "val_no_chance": "No chance",
+    "val_no_sports": "No, she hates sports",
+    "val_fun_day": "A fun day",
+    "val_quality_time": "Quality time",
+    "val_food": "Food",
+    "val_ornaments": "Ornaments",
+    "val_cake": "Cake",
+    "val_plaque": "Plaque",
+    "val_sweater": "Sweater",
+    "val_poster": "Poster",
+    "val_cat": "Cat",
+    "val_hat": "Hat"
   },
 
   "products": {
-    "res_4pack": "a Holiday 4-Pack"
+    "res_4pack": "a Holiday 4-Pack",
+    "res_4pack_own": "a Holiday 4-Pack of your own",
+    "res_4pack_ornament": "a Holiday 4-Pack (plus free ornament)"
   },
 
   "reasons": {
-    "rsn_redeem_yourself": "Face it, you'll never be good enough for his daughter. Your best chance of redeeming yourself would be to get him %s."
+    "rsn_skip_ties": "I think you can skip a year of the ties. How about this year you get him a gift that won't end up thrown in the back of the closet? Like %s.",
+    "rsn_month_ties": "I know you are worried that Dad needs another tie, but if he can go an entire month without wearing the same tie twice I think he is ok on ties. Let's go with %s this year.",
+    "rsn_has_tools": "Then he already has all the tools he needs. Get him %s this year.",
+    "rsn_stop_enabling": "Stop enabling this behavior and get him %s this year.",
+    "rsn_break_mug": "Here's what you do: 'accidentally' drop the mug and get him %s to make up for your clumsiness.",
+    "rsn_gift_he_uses": "Then get him a gift he will actually use... Like %s.",
+    "rsn_fire_hazard": "For the rest of the family's safety you need to get him a gift that is not a fire hazard... Like %s.",
+    "rsn_amends_bullying": "Show him how much you've grown and make amends for your adolescent bullying by getting him %s.",
+    "rsn_best_brother": "You are the best older brother ever! You have probably already bought him multiple %ss.",
+    "rsn_superiority": "Here's what you do: Get him %s, then get yourself a 10-Pack and passive-aggressively demonstrate your newfound superiority.",
+    "rsn_best_older_brother": "You have the best older brother ever! Get a pair of %s and enjoy some quality time with this great guy.",
+    "rsn_get_off_couch": "Get him %s and get him off your couch!",
+    "rsn_no_need": "No need to buy this person a gift. Take the money you would have spent and put it towards %s.",
+    "rsn_promotion": "Get him %s. Can you say 'promotion'?",
+    "rsn_out_of_office": "Get him %s consisting of 4 weekday, day games and enjoy the extra time he is out of the office.",
+    "rsn_redeem_yourself": "Face it, you'll never be good enough for his daughter. Your best chance of redeeming yourself would be to get him %s.",
+    "rsn_true_life_partner": "You have found yourself a true life partner. Get her %s as a sign of your gratitude.",
+    "rsn_girl_chance": "Nice, Bro! Get her %s to make sure you don't screw this up.",
+    "rsn_soften_blow": "Dump her. But first give her %s to soften the blow.",
+    "rsn_oh_boy": "Oh boy, just get her %s. Trust us, you'll thank us later.",
+    "rsn_experiment": "Time to pull the plug on this little experiment and just get her %s.",
+    "rsn_free_weekends": "Good decision. You know your limitations. Get her %s and spend your next few weekends watching college football instead of braving shopping malls only to get her a shirt she will return anyway.",
+    "rsn_favorite_child": "Obviously you got your brains from your mother. Earn the title of 'favorite child' by getting her %s.",
+    "rsn_miller_park": "Well that was easy... Get her %s. She can enjoy all of those things at Miller Park.",
+    "rsn_free_ornament": "Perfect! You get a free Bernie Brewer with every pair of Holiday 4-packs.",
+    "rsn_forget_ashamed": "For just a minute, forget about what she wants... and get her %s.",
+    "rsn_changed_diapers": "The woman probably changed your diapers when you were a baby. You owe her BIG TIME. Get her %s.",
+    "rsn_face_light_up": "You know you can't wait to see her face light up when she opens that %s. Just think of the memories you'll make.",
+    "rsn_safer_toy": "You could get her a cat toy... Of course, then she will know that you think she is the crazy cat lady. %s is safer.",
+    "rsn_never_wrong": "Get her %s. You can never go wrong with that."
   }
 }

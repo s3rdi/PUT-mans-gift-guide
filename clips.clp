@@ -122,7 +122,7 @@
    (attribute (name prev_gift) (value val_powertools))
    (not (attribute (name is_handy)))
    =>
-   (assert (request-input (id q_dad_handy) (valid-answers val_yes val_no)))
+   (assert (request-input (id q_dad_handy) (valid-answers val_yes val_no_worse_fix)))
 )
  
 ; Then he already has all the tools he needs. Get him a Holiday 4-Pack this year.
@@ -136,7 +136,7 @@
 ; Stop enabling this behavior and get him Holiday 4-Pack this year.
 (defrule res-dad-tools-not-handy
    (attribute (name relation) (value val_dad))
-   (attribute (name is_handy) (value val_no))
+   (attribute (name is_handy) (value val_no_worse_fix))
    =>
    (assert (recommendation (id res_4pack) (reason rsn_stop_enabling)))
 )
@@ -147,13 +147,13 @@
    (attribute (name prev_gift) (value val_mug))
    (not (attribute (name uses_mug)))
    =>
-   (assert (request-input (id q_dad_mug_usage) (valid-answers val_yes val_no)))
+   (assert (request-input (id q_dad_mug_usage) (valid-answers val_yes_embarrassing val_no_why_bother)))
 )
  
 ; Here's what you do: "accidentally" drop the mug and get him a Holiday 4-Pack to make up for your clumsiness.
 (defrule res-dad-mug-yes
    (attribute (name relation) (value val_dad))
-   (attribute (name uses_mug) (value val_yes))
+   (attribute (name uses_mug) (value val_yes_embarrassing))
    =>
    (assert (recommendation (id res_4pack) (reason rsn_break_mug)))
 )
@@ -161,7 +161,7 @@
 ; Then get him a gift he will actually use... Like a Holiday 4-Pack.
 (defrule res-dad-mug-no
    (attribute (name relation) (value val_dad))
-   (attribute (name uses_mug) (value val_no))
+   (attribute (name uses_mug) (value val_no_why_bother))
    =>
    (assert (recommendation (id res_4pack) (reason rsn_gift_he_uses)))
 )
@@ -172,16 +172,13 @@
    (attribute (name prev_gift) (value val_grill))
    (not (attribute (name almost_fire)))
    =>
-   (assert (request-input (id q_dad_almost_fire) (valid-answers val_yes val_no)))
+   (assert (request-input (id q_dad_almost_fire) (valid-answers val_yes_exactly val_no_why_bother)))
 )
  
 ; For the rest of the family's safety you need to get him a gift that is not a fire hazard... Like a Holiday 4-Pack.
 (defrule res-dad-grill
    (attribute (name relation) (value val_dad))
-   (or
-	(attribute (name almost_fire) (value val_yes))
-	(attribute (name almost_fire) (value val_no))
-   )
+   (attribute (name almost_fire) (value ?))
    =>
    (assert (recommendation (id res_4pack) (reason rsn_fire_hazard)))
 )
@@ -275,6 +272,7 @@
  
 ; Is this person your boss?
 (defrule ask-is-boss
+   (attribute (name gender) (value val_male))
    (attribute (name relation) (value val_coworker))
    (not (attribute (name is_boss)))
    =>
@@ -283,6 +281,7 @@
  
 ; No need to buy this person a gift. Take the money you would have spent and put it towards a Holiday 4-Pack of your own.
 (defrule res-not-boss
+   (attribute (name gender) (value val_male))
    (attribute (name relation) (value val_coworker))
    (attribute (name is_boss) (value val_no))
    =>
@@ -510,6 +509,7 @@
  
 ; Do you know anything about this person?
 (defrule ask-coworker-knowledge
+   (attribute (name gender) (value female))
    (attribute (name relation) (value val_coworker))
    (not (attribute (name know_anything)))
    =>
