@@ -2,7 +2,8 @@ import clips
 import tkinter as tk
 import json
 
-font_family = "Segoe UI"
+font_family = "Segoe UI Variable"
+fancy_font = "Segoe Print"
 
 class App(tk.Tk):
     def __init__(self):
@@ -11,14 +12,23 @@ class App(tk.Tk):
         self.geometry("1280x720")
         self.resizable(False, False)
 
-        self.question_label = tk.Label(self, text="Question", wraplength=700)
-        self.question_label.config(font=(font_family, 20, "bold"))
-        self.question_label.pack(pady=(90, 0))
+        self.bg_image = tk.PhotoImage(file="bg.png")
+        self.bg_label = tk.Label(self, image=self.bg_image)
+        self.bg_label.place(x=0, y=0, relwidth=1, relheight=1)
 
-        self.buttons_frame = tk.Frame(self)
-        self.buttons_frame.pack(pady=(70, 0))
+        self.content_frame = tk.Frame(self, bg="#2F231A")
+        self.content_frame.pack(expand=True, pady=(100, 0))
 
-        self.back_button = tk.Button(self, text="< Back", command=self.go_back)
+        self.question_label = tk.Label(self.content_frame, text="Question", wraplength=700, bg="#2F231A", fg="#E7D8B1")
+        self.question_label.config(font=(fancy_font, 20, "bold"))
+        self.question_label.pack(pady=20, padx=20)
+
+        self.buttons_frame = tk.Frame(self.content_frame, bg="#2F231A")
+        self.buttons_frame.pack(pady=(10, 20), padx=20)
+
+        self.back_button = tk.Button(self, text="< Back", command=self.go_back,
+                                     bg="#ffd966", activebackground="#ffe187",
+                                     borderwidth=3, relief="ridge")
         self.back_button.config(font=(font_family, 10))
         self.back_button.pack(side="bottom", pady=50)
 
@@ -45,6 +55,8 @@ class App(tk.Tk):
 
 
     def set_question(self, question, answers):
+        if not self.buttons_frame.winfo_ismapped():
+            self.buttons_frame.pack(pady=(0, 20), padx=20)
         self.question_label.config(text=question)
 
         for b in self.buttons_frame.winfo_children():
@@ -57,7 +69,7 @@ class App(tk.Tk):
                 self.buttons_frame,
                 command=(lambda l = label: self.on_answer(l)),
                 text=label,
-                width=50, height=5, wraplength=200,
+                width=50, height=5, wraplength=250,
                 bg="#ffd966", activebackground="#ffe187",
                 borderwidth=5, relief="ridge",
                 font=(font_family, 9)
@@ -74,6 +86,7 @@ class App(tk.Tk):
         self.ask_next_question()
 
     def show_recommendation(self, rec_id, reason_id):
+        self.buttons_frame.pack_forget()
         self.question_label.config(text=f"{self.dict.get_full_reason(rec_id, reason_id)}")
         for b in self.buttons_frame.winfo_children():
             b.destroy()
