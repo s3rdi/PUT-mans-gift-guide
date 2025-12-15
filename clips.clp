@@ -66,7 +66,7 @@
    =>
    (assert (request-input 
       (id q_relation_female)
-      (valid-answers val_wife val_girlfriend val_mom val_motherinlaw val_sister val_coworker_f)
+      (valid-answers val_wife val_girlfriend val_mom val_motherinlaw val_sister val_coworker)
    ))
 )
  
@@ -88,7 +88,6 @@
  
 ; How original... How many ties does he own now?
 (defrule ask-dad-tie-count
-   (attribute (name relation) (value val_dad))
    (attribute (name prev_gift) (value val_tie))
    (not (attribute (name tie_count)))
    =>
@@ -100,8 +99,6 @@
  
 ; I think you can skip a year of the ties. How about this year you get him a gift that won't end up thrown in the back of the closet? Like a Holiday 4-Pack.
 (defrule res-dad-too-many-ties
-   (attribute (name relation) (value val_dad))
-   (attribute (name prev_gift) (value val_tie))
    (attribute (name tie_count) (value val_gt_75))
    =>
    (assert (recommendation (id res_4pack) (reason rsn_skip_ties)))
@@ -109,8 +106,6 @@
  
 ; I know you are worried that Dad needs another tie, but if he can go an entire month without wearing the same tie twice I think he is ok on ties. Let's go with a Holiday 4-Pack this year.
 (defrule res-dad-not-so-many-ties
-   (attribute (name relation) (value val_dad))
-   (attribute (name prev_gift) (value val_tie))
    (attribute (name tie_count) (value val_lt_75))
    =>
    (assert (recommendation (id res_4pack) (reason rsn_month_ties)))
@@ -118,7 +113,6 @@
  
 ; So Dad is pretty handy huh?
 (defrule ask-dad-handy
-   (attribute (name relation) (value val_dad))
    (attribute (name prev_gift) (value val_powertools))
    (not (attribute (name is_handy)))
    =>
@@ -127,7 +121,6 @@
  
 ; Then he already has all the tools he needs. Get him a Holiday 4-Pack this year.
 (defrule res-dad-tools-handy
-   (attribute (name relation) (value val_dad))
    (attribute (name is_handy) (value val_yes))
    =>
    (assert (recommendation (id res_4pack) (reason rsn_has_tools)))
@@ -135,7 +128,6 @@
  
 ; Stop enabling this behavior and get him Holiday 4-Pack this year.
 (defrule res-dad-tools-not-handy
-   (attribute (name relation) (value val_dad))
    (attribute (name is_handy) (value val_no_worse_fix))
    =>
    (assert (recommendation (id res_4pack) (reason rsn_stop_enabling)))
@@ -143,7 +135,6 @@
  
 ; And does he actually use this mug?
 (defrule ask-dad-mug-usage
-   (attribute (name relation) (value val_dad))
    (attribute (name prev_gift) (value val_mug))
    (not (attribute (name uses_mug)))
    =>
@@ -152,7 +143,6 @@
  
 ; Here's what you do: "accidentally" drop the mug and get him a Holiday 4-Pack to make up for your clumsiness.
 (defrule res-dad-mug-yes
-   (attribute (name relation) (value val_dad))
    (attribute (name uses_mug) (value val_yes_embarrassing))
    =>
    (assert (recommendation (id res_4pack) (reason rsn_break_mug)))
@@ -160,7 +150,6 @@
  
 ; Then get him a gift he will actually use... Like a Holiday 4-Pack.
 (defrule res-dad-mug-no
-   (attribute (name relation) (value val_dad))
    (attribute (name uses_mug) (value val_no_why_bother))
    =>
    (assert (recommendation (id res_4pack) (reason rsn_gift_he_uses)))
@@ -168,7 +157,6 @@
  
 ; Was he so excited to test out the new grill right away that almost started the house on fire?
 (defrule ask-dad-grill-fire
-   (attribute (name relation) (value val_dad))
    (attribute (name prev_gift) (value val_grill))
    (not (attribute (name almost_fire)))
    =>
@@ -177,7 +165,6 @@
  
 ; For the rest of the family's safety you need to get him a gift that is not a fire hazard... Like a Holiday 4-Pack.
 (defrule res-dad-grill
-   (attribute (name relation) (value val_dad))
    (attribute (name almost_fire) (value ?))
    =>
    (assert (recommendation (id res_4pack) (reason rsn_fire_hazard)))
@@ -207,7 +194,6 @@
  
 ; Show him how much you've grown and make amends for your adolescent bullying by getting him a Holiday 4-Pack.
 (defrule res-brother-younger-bully
-   (attribute (name relative_age) (value val_younger))
    (attribute (name bully_you) (value val_yes))
    =>
    (assert (recommendation (id res_4pack) (reason rsn_amends_bullying)))
@@ -215,7 +201,6 @@
  
 ; You are the best older brother ever! You have probably already bought him multiple Holiday 4-Packs.
 (defrule res-brother-younger-nice
-   (attribute (name relative_age) (value val_younger))
    (attribute (name bully_you) (value val_no))
    =>
    (assert (recommendation (id res_4pack) (reason rsn_best_brother)))
@@ -223,7 +208,6 @@
  
 ; So he probably picked on you when you were growing up?
 (defrule ask-brother-older-bullied
-   (attribute (name relation) (value val_brother))
    (attribute (name relative_age) (value val_older))
    (not (attribute (name bully_him)))
    =>
@@ -232,7 +216,6 @@
  
 ; Here's what you do: Get him a Holiday 4-Pack, then get yourself a 10-Pack and passive-aggressively demonstrate your newfound superiority.
 (defrule res-brother-older-noogie
-   (attribute (name relative_age) (value val_older))
    (attribute (name bully_him) (value val_yes))
    =>
    (assert (recommendation (id res_4pack) (reason rsn_superiority)))
@@ -240,7 +223,6 @@
  
 ; You have the best older brother ever! Get a pair of Holiday 4-Pack and enjoy some quality time with this great guy.
 (defrule res-brother-older-nice
-   (attribute (name relative_age) (value val_older))
    (attribute (name bully_him) (value val_no))
    =>
    (assert (recommendation (id res_4pack) (reason rsn_best_older_brother)))
@@ -264,7 +246,6 @@
 ; Last week when he invited himself over then passed out on the couch while watching 'Scandal'.
 ; Get him a Holiday 4-Pack and get him off your couch!
 (defrule res-uncle-any
-   (attribute (name relation) (value val_uncle))
    (attribute (name seen_lately) (value ?))
    =>
    (assert (recommendation (id res_4pack) (reason rsn_get_off_couch)))
@@ -281,8 +262,6 @@
  
 ; No need to buy this person a gift. Take the money you would have spent and put it towards a Holiday 4-Pack of your own.
 (defrule res-not-boss
-   (attribute (name gender) (value val_male))
-   (attribute (name relation) (value val_coworker))
    (attribute (name is_boss) (value val_no))
    =>
    (assert (recommendation (id res_4pack_own) (reason rsn_no_need)))
@@ -290,7 +269,6 @@
  
 ; Do you like him?
 (defrule ask-boss-like
-   (attribute (name relation) (value val_coworker))
    (attribute (name is_boss) (value val_yes))
    (not (attribute (name boss_like)))
    =>
@@ -299,8 +277,6 @@
  
 ; Get him a Holiday 4-Pack. Can you say 'promotion'?
 (defrule res-boss-like
-   (attribute (name relation) (value val_coworker))
-   (attribute (name is_boss) (value val_yes))
    (attribute (name boss_like) (value val_yes))
    =>
    (assert (recommendation (id res_4pack) (reason rsn_promotion)))
@@ -308,8 +284,6 @@
  
 ; Get him a Holiday 4-Pack consisting of 4 weekday, day games and enjoy the extra time he is out of the office.
 (defrule res-boss-dont-like
-   (attribute (name relation) (value val_coworker))
-   (attribute (name is_boss) (value val_yes))
    (attribute (name boss_like) (value val_no))
    =>
    (assert (recommendation (id res_4pack) (reason rsn_out_of_office)))
@@ -432,7 +406,6 @@
  
 ; Well that was easy... Get her a Holiday 4-Pack. She can enjoy all of those things at Miller Park.
 (defrule res-mom-any-no-ornaments
-   (attribute (name relation) (value val_mom))
    (attribute (name mom_likes) (value val_fun_day|val_quality_time|val_food))
    =>
    (assert (recommendation (id res_4pack) (reason rsn_miller_park)))
@@ -440,7 +413,6 @@
  
 ; Perfect! You get a free Bernie Brewer with every pair of Holiday 4-packs
 (defrule res-mom-ornaments
-   (attribute (name relation) (value val_mom))
    (attribute (name mom_likes) (value val_ornaments))
    =>
    (assert (recommendation (id res_4pack) (reason rsn_free_ornament)))
@@ -460,7 +432,6 @@
  
 ; For just a minute, forget about what she wants...
 (defrule res-motherinlaw-want-any
-   (attribute (name relation) (value val_motherinlaw))
    (attribute (name really_wants) (value ?))
    =>
    (assert (recommendation (id res_4pack) (reason rsn_forget_ashamed)))
@@ -497,8 +468,6 @@
 
 ; You're still dwelling on this?
 (defrule ask-sister-dwelling
-   (attribute (name relation) (value val_sister))
-   (attribute (name relative_age) (value val_younger))
    (attribute (name is_spoiled) (value val_yes_pony))
    (not (attribute (name still_dwelling)))
    =>
@@ -507,7 +476,6 @@
 
 ; You know you can't wait to see her face light up when she opens that Holiday 4-Pack. Just think of the memories you'll make.
 (defrule res-sister-spoiled-any
-   (attribute (name relation) (value val_sister))
    (or
    (attribute (name is_spoiled) (value val_no_adorable))
    (attribute (name still_dwelling) (value val_fresh))
@@ -531,7 +499,6 @@
  
 ; You could get her a cat toy... Of course, then she will know that you think she is the crazy cat lady. A Holiday 4-Pack is safer.
 (defrule res-coworker-cat
-   (attribute (name relation) (value val_coworker))
    (attribute (name know_anything) (value val_cat))
    =>
    (assert (recommendation (id res_4pack) (reason rsn_safer_toy)))
@@ -539,7 +506,6 @@
  
 ; Get her a Holiday 4-Pack. You can never go wrong with that.
 (defrule res-coworker-hat
-   (attribute (name relation) (value val_coworker))
    (attribute (name know_anything) (value val_hat))
    =>
    (assert (recommendation (id res_4pack) (reason rsn_never_wrong)))
