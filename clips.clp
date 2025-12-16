@@ -429,14 +429,54 @@
    =>
    (assert (request-input (id q_really_wants) (valid-answers val_cake val_plaque val_sweater val_poster)))
 )
- 
-; For just a minute, forget about what she wants...
-(defrule res-motherinlaw-want-any
-   (attribute (name really_wants) (value ?))
+
+; Have you ever actually tried fruitcake? Nobody likes that stuff.
+(defrule ask-mil-cake
+   (attribute (name really_wants) (value val_cake))
+   (not (attribute (name mil_reaction)))
    =>
-   (assert (recommendation (id res_4pack) (reason rsn_forget_ashamed)))
+   (assert (request-input (id q_mil_cake) (valid-answers val_forget_wants val_keep_thinking)))
 )
- 
+
+; As if she doesn't already have enough of those...
+(defrule ask-mil-plaque
+   (attribute (name really_wants) (value val_plaque))
+   (not (attribute (name mil_reaction)))
+   =>
+   (assert (request-input (id q_mil_plaque) (valid-answers val_forget_wants val_keep_thinking)))
+)
+
+; We both know how much you hate hand-knit sweaters. And lap dogs. And dogs in human clothes.
+(defrule ask-mil-sweater
+   (attribute (name really_wants) (value val_sweater))
+   (not (attribute (name mil_reaction)))
+   =>
+   (assert (request-input (id q_mil_sweater) (valid-answers val_forget_wants val_keep_thinking)))
+)
+
+; Do you really want to endure the strange looks you will get when you buy this?
+(defrule ask-mil-poster
+   (attribute (name really_wants) (value val_poster))
+   (not (attribute (name mil_reaction)))
+   =>
+   (assert (request-input (id q_mil_poster) (valid-answers val_forget_wants val_keep_thinking)))
+)
+
+; AH HA! Get her a gift you will not be ashamed to buy - like a Holiday 4-Pack
+(defrule res-mil-forget-wants
+   (attribute (name mil_reaction) (value val_forget_wants))
+   =>
+   (assert (recommendation (id res_4pack) (reason rsn_ah_ha)))
+)
+
+; You'd better keep thinking... She's still mad at you for ruining Christmas last year.
+(defrule ask-mil-keep-thinking
+   (attribute (name mil_reaction) (value val_keep_thinking))
+   =>
+   ; do gałęzi MOM
+   (assert (request-input (id q_mom_likes) (valid-answers val_fun_day val_quality_time val_food val_ornaments)))
+)
+
 ; =========================================================
 ; 4d. FEMALE -> SISTER
 ; =========================================================

@@ -87,6 +87,22 @@
     "q_still_dwelling": {
       "text": "You're still dwelling on this?",
       "attribute": "still_dwelling"
+    },
+    "q_mil_cake": {
+      "text": "Have you ever actually tried fruitcake? Nobody likes that stuff.",
+      "attribute": "mil_reaction"
+    },
+    "q_mil_plaque": {
+      "text": "As if she doesn't already have enough of those...",
+      "attribute": "mil_reaction"
+    },
+    "q_mil_sweater": {
+      "text": "We both know how much you hate hand-knit sweaters. And lap dogs. And dogs in human clothes.",
+      "attribute": "mil_reaction"
+    },
+    "q_mil_poster": {
+      "text": "Do you really want to endure the strange looks you will get when you buy this?",
+      "attribute": "mil_reaction"
     }
   },
 
@@ -137,7 +153,9 @@
     "val_poster": "One of those creepy posters where the kids are dressed up like adults",
     "val_cat": "I think she has a cat.",
     "val_hat": "Nope. Drew her name out of a hat for Secret Santa.",
-    "val_fresh": "Time to start fresh. 'Tis the season for giving and forgiving!"
+    "val_fresh": "Time to start fresh. 'Tis the season for giving and forgiving!",
+    "val_forget_wants": "For just a minute, forget about what she wants...",
+    "val_keep_thinking": "You'd better keep thinking... She's still mad at you for ruining Christmas last year."
   },
 
   "products": {
@@ -175,6 +193,7 @@
     "rsn_changed_diapers": "The woman probably changed your diapers when you were a baby. You owe her BIG TIME. Get her %s.",
     "rsn_face_light_up": "You know you can't wait to see her face light up when she opens that %s. Just think of the memories you'll make.",
     "rsn_safer_toy": "You could get her a cat toy... Of course, then she will know that you think she is the crazy cat lady. %s is safer.",
-    "rsn_never_wrong": "Get her %s. You can never go wrong with that."
+    "rsn_never_wrong": "Get her %s. You can never go wrong with that.",
+    "rsn_ah_ha": "AH HA! Get her a gift you will not be ashamed to buy - like %s."
   }
 }
