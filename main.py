@@ -12,7 +12,10 @@ class App(tk.Tk):
         self.geometry("1280x720")
         self.resizable(False, False)
 
-        self.bg_image = tk.PhotoImage(file="bg.png")
+        with open("config.json") as f:
+            config = json.load(f)
+        bg_path = config["bg_image"]
+        self.bg_image = tk.PhotoImage(file=bg_path)
         self.bg_label = tk.Label(self, image=self.bg_image)
         self.bg_label.place(x=0, y=0, relwidth=1, relheight=1)
 
@@ -32,7 +35,8 @@ class App(tk.Tk):
         self.back_button.config(font=(font_family, 10))
         self.back_button.pack(side="bottom", pady=50)
 
-        self.dict = Dictionary()
+        full_text = config["full_text"]
+        self.dict = Dictionary(full_text)
 
         self.kb = KnowledgeBase("clips.clp", self.dict)
         self.current_question = None
@@ -139,7 +143,7 @@ class KnowledgeBase:
                 fact.retract()
 
 class Dictionary:
-    def __init__(self, path="full.json"):
+    def __init__(self, path):
         with open(path) as f:
             data = json.load(f)
         self.questions = data["questions"]
